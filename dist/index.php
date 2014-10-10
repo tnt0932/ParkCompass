@@ -12,14 +12,10 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-    
 
     
-
-    
-      <link rel="stylesheet" type="text/css" href="css/html5-reset.min.css">
-      <link rel="stylesheet" type="text/css" href="css/styles.min.css">
-    
+    <link rel="stylesheet" type="text/css" href="css/html5-reset.1.0.0.min.css">
+      <link rel="stylesheet" type="text/css" href="css/styles.1.0.0.min.css">
 
     <!-- <link rel="stylesheet/less" type="text/css" href="css/styles.less"> -->
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
