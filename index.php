@@ -20,8 +20,8 @@
     <!--<!(endif)-->
 
     <!--(if target dist)>
-      <link rel="stylesheet" type="text/css" href="css/html5-reset.min.css">
-      <link rel="stylesheet" type="text/css" href="css/styles.min.css">
+      <link rel="stylesheet" type="text/css" href="css/html5-reset.{{pkgVersion}}.min.css">
+      <link rel="stylesheet" type="text/css" href="css/styles.{{pkgVersion}}.min.css">
     <!(endif)-->
 
     <!-- <link rel="stylesheet/less" type="text/css" href="css/styles.less"> -->
