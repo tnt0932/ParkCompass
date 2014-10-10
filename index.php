@@ -1,5 +1,5 @@
 <?php
-    require_once("pc_dbinfo.php");
+    require_once("db_config.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@
     /////////////////////////////////////////////////////////--> 
     
     <header>
-        <h1><a href="index">PARK COMPASS</a><span></span></h1>
+        <h1><a href="/">PARK COMPASS</a><span></span></h1>
         <nav>
             <a href="about">about</a>
             <a href="#"><img src="img/info_icon.png" width="17" height="17" alt="info"></a>

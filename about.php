@@ -1,5 +1,5 @@
 <?php
-require_once('local-variables.php')
+require_once('project_vars.php')
 function sanitize( $str ) {
    return( str_ireplace(array( "\r", "\n", "%0a", "%0d", "Content-Type:", "bcc:","to:","cc:" ), "", $str ) );
 }

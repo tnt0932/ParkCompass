@@ -39,5 +39,5 @@ Thumbs.db
 
 # Project Specific #
 ######################
-pc_dbinfo.php
-local-variables.php
+db_config.php
+project_vars.php
