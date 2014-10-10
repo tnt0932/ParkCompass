@@ -74,6 +74,7 @@ module.exports = function(grunt) {
 	        files: {
 			  '<%= build.dest %>/index.php' : 'index.php',
 			  '<%= build.dest %>/about.php' : 'about.php',
+			  '<%= build.dest %>/db_config.php' : 'db_config_dist.php'
 	        }
 	      }
 	    },

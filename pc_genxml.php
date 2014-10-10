@@ -1,5 +1,7 @@
 <?php
+
 require("db_config.php");
+
 
 // Get parameters from URL
 $center_lat = $_GET["lat"];

@@ -1,5 +1,5 @@
 <?php
-require("pc_dbinfo.php");
+require("db_config.php");
 
 
 // Open a connection to the MySQL server

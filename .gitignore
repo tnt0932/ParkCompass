@@ -40,6 +40,8 @@ Thumbs.db
 # Project Specific #
 ######################
 db_config.php
+db_config_dist.php
+dist/db_config.php
 project_vars.php
 .sass-cache
 node_modules
