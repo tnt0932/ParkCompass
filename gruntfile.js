@@ -8,9 +8,9 @@ module.exports = function(grunt) {
 	    meta: {
 	      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
 	        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-	        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
+	        '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
 	        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-	        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
+	        ' Licensed <%= pkg.license %> */\n'
 	    },
 
 	    // Defines a custom config property.
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 	    // lint task
 	    // Defines witch files to lint
 	    jshint: {
-	      files: ['gruntfile.js', 'js/scripts.js', 'js/map.js', 'js/panel.js']
+	      files: ['gruntfile.js', 'js/map.js']
 	    },
 	    // qunit multi-task
 	    // Defines 2 different targets
@@ -37,9 +37,12 @@ module.exports = function(grunt) {
 	    // Each target defines a list of files to concatenate
 	    // and a destination file to write the output
 	    concat: {
+	      libs: {
+	      	src: ['<%= meta.banner %>', 'js/jquery.cookie.js', 'js/markercluster.js' ],
+	        dest: '<%= build.dest %>/js/<%= pkg.name %>-libs.<%= pkg.version %>.js'
+	      },
 	      dist: {
-	        src: [
-	          '<banner:meta.banner>', 'js/scripts.js', 'js/map.js', 'js/panel.js' ],
+	        src: ['<%= meta.banner %>', 'js/map.js' ],
 	        dest: '<%= build.dest %>/js/<%= pkg.name %>-app.<%= pkg.version %>.js'
 	      }
 	    },
@@ -51,9 +54,10 @@ module.exports = function(grunt) {
 	    uglify: {
 	      dist: {
 	      	options: {
-	      		banner: '<banner:meta.banner>'
+	      		banner: '<%= meta.banner %>'
 	      	},
 	      	files: {
+	      		'<%= build.dest %>/js/<%= pkg.name %>-libs.<%= pkg.version %>.min.js' : ['<%= concat.dist.dest %>'],
 	      		'<%= build.dest %>/js/<%= pkg.name %>-app.<%= pkg.version %>.min.js' : ['<%= concat.dist.dest %>']
 	      	}
 	      }
@@ -97,11 +101,30 @@ module.exports = function(grunt) {
 	    // runs the defined tasks every time a watched file is updated
 
 		sass: {
-			dist: {
-				files: {
-					'css/styles.css' : 'sass/styles.scss'
-				}
-			}
+		    dist: {
+		        options: {
+		            style: 'minified',
+		            require: ['./sass/helpers/url64.rb']
+		        },
+		        expand: true,
+		        cwd: 'sass/',
+		        src: ['**/*.scss'],
+		        dest: '<%= build.dest %>/css',
+		        ext: '.<%= pkg.version %>.min.css'
+		    },
+		    dev: {
+		        options: {
+		            style: 'expanded',
+		            debugInfo: true,
+		            lineNumbers: true,
+		            require: ['./sass/helpers/url64.rb']
+		        },
+		        expand: true,
+		        cwd: 'sass/',
+		        src: ['*.scss'],
+		        dest: 'css/',
+		        ext: '.css'
+		    }
 		},
 		watch: {
 			css: {
@@ -112,17 +135,6 @@ module.exports = function(grunt) {
 				files: '<%= jshint.files %>',
 				tasks: 'jshint'
 			}
-		},
-		cssmin: {
-		  dist: {
-		    files: [{
-		      expand: true,
-		      cwd: 'css/',
-		      src: ['*.css', '!*.min.css'],
-		      dest: 'dist/css/',
-		      ext: '.min.css'
-		    }]
-		  }
 		}
 	});
 
@@ -138,5 +150,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default',['watch']);
-	grunt.registerTask('dist', ['clean', 'cssmin', 'concat', 'uglify', 'targethtml']);
+	grunt.registerTask('dist', ['clean', 'sass:dist', 'concat', 'uglify', 'targethtml']);
 };

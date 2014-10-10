@@ -25,15 +25,13 @@
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&libraries=places"></script>
-    <script src="js/markercluster.js"></script>
-    
-    <script src="js/jquery.cookie.js"></script>
     <!-- <script src="js/less-1.3.0.min.js"></script> -->
 
     
 
     
-    <script src="js/parkcompass-app.1.0.0.js"></script>
+    <script src="js/parkcompass-libs.1.0.0.min.js"></script>
+    <script src="js/parkcompass-app.1.0.0.min.js"></script>
     
     
     <script type="text/javascript">
