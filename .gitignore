@@ -41,3 +41,5 @@ Thumbs.db
 ######################
 db_config.php
 project_vars.php
+.sass-cache
+node_modules

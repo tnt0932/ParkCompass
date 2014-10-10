@@ -7,11 +7,11 @@ google.maps.event.addDomListener(window, 'load', function() {
         };
         
         
-    var infoWindow = new google.maps.InfoWindow;
+    var infoWindow = new google.maps.InfoWindow();
     
     var panelDiv = document.getElementById('sidebar');
     
-    var data = new ParksDataSource;
+    var data = new ParksDataSource();
     
     var view = new storeLocator.View(map, data, {
         geolocation: false,

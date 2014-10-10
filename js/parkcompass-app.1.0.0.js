@@ -1,3 +1,6 @@
+/* scripts.js */
+
+
 var map;
 var xml;
 var markers = [];
@@ -19,7 +22,7 @@ var userIconShadowAnchor = new google.maps.Point(3, 34);
 var userIconShadow = new google.maps.MarkerImage(userIconShadowURL, userIconShadowSize, userIconShadowOrigin, userIconShadowAnchor);
 var markerClusterExists = false;
 var initialLocation;
-var browserSupportFlag;
+var browserSupportFlag = new Boolean();
 var clickedFilters = [];
 
 
@@ -79,7 +82,7 @@ function getParksData(xml) {
     var bounds = new google.maps.LatLngBounds();
     var parkNodes = xml.documentElement.getElementsByTagName("park");
     
-    if (parkNodes.length === 0) {
+    if (parkNodes.length == 0) {
         userMarkerPosition = new google.maps.LatLng(49.25, -123.133333);
         alert('No Metro Vancouver parks found in that area. We\'re going to move your marker back to the heart of Vancouver!');
         clearUserMarker();
@@ -103,7 +106,7 @@ function getParksData(xml) {
         var name = parkNodes[i].getAttribute("pName");
         var address = parkNodes[i].getAttribute("pAddress");
         var neighbourhood = parkNodes[i].getAttribute("nName");
-        var url = parkNodes[i].getAttribute("slug");
+        var url = parkNodes[i].getAttribute("slug")
         var latlng = new google.maps.LatLng(
         parseFloat(parkNodes[i].getAttribute("pLat")), parseFloat(parkNodes[i].getAttribute("pLng")));
         var distance = parseFloat(parkNodes[i].getAttribute("distance"));
@@ -163,16 +166,17 @@ function showingResultsFor() {
         $('#facilities_flyout').click(function(e) {
             // don't register event if user clicks on containing div, only directly on facilities
             if ($(e.target).attr('id') != 'facilities_flyout') {
-                var target_id = $(e.target).attr('id').substr(6);
                 if (!$(e.target).hasClass('facility_selected')) {
                     //console.log(e.target);
                     $(e.target).addClass('facility_selected');
-                    clickedFilters.push(target_id);
+                    var id = $(e.target).attr('id').substr(6);
+                    clickedFilters.push(id);
                     //console.log(clickedFilters);
                 } else {
                     $(e.target).removeClass('facility_selected');
+                    var id = $(e.target).attr('id').substr(6);
                     for (var i = 0; i < clickedFilters.length; i++) {
-                        if (clickedFilters[i] == target_id) {
+                        if (clickedFilters[i] == id) {
                             clickedFilters.splice(i,1);
                         }
                     }
@@ -201,7 +205,7 @@ function createMarker(latlng, name, address, neighbourhood, facilitiesList, url)
     var listHtml = '<ul>';
     for (var i=0; i < facilitiesList.length; i++) {
         listHtml += '<li>'+facilitiesList[i][0]+'<span>'+facilitiesList[i][1]+'</span></li>';
-    }
+    };
     listHtml += '</ul>';
     var html = '<div class="infowindow"><h2>' + name + "</h2><br/><p>Address: <b>" + address + "</b></p><br/><p>Neighbourhood: <b>" + neighbourhood + "</b></p><br>" + listHtml + "<br><p>Share:<br><input type='text' value='"+link+"' onclick='this.select()' class='parkLink'><a href='" + directions + "' target='_blank'>Directions</a>";
     var marker = new google.maps.Marker({
@@ -291,7 +295,7 @@ function geolocation() {
   }
   
   function handleNoGeolocation(errorFlag) {
-    if (errorFlag === true) {
+    if (errorFlag == true) {
       alert("Geolocation service failed. We've placed you in Downtown Vancouver.");
       //initialLocation = new google.maps.LatLng(userMarkerPosition);
     } else {
@@ -309,7 +313,7 @@ function geolocation() {
 // ===========================================
 
 function downloadUrl(url, callback) {
-    var request = window.ActiveXObject ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest();
+    var request = window.ActiveXObject ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest;
     request.onreadystatechange = function() {
         if (request.readyState == 4) {
             request.onreadystatechange = doNothing;
@@ -326,8 +330,32 @@ function parseXml(str) {
         doc.loadXML(str);
         return doc;
     } else if (window.DOMParser) {
-        return (new DOMParser()).parseFromString(str, 'text/xml');
+        return (new DOMParser).parseFromString(str, 'text/xml');
     }
 }
 
 function doNothing() {}
+google.maps.event.addDomListener(window, 'load', function() {
+  var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+  var mapOptions = {
+            zoom: 11,
+            center: new google.maps.LatLng(49.3, -123),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        
+        
+    var infoWindow = new google.maps.InfoWindow;
+    
+    var panelDiv = document.getElementById('sidebar');
+    
+    var data = new ParksDataSource;
+    
+    var view = new storeLocator.View(map, data, {
+        geolocation: false,
+        features: data.getFeatures()
+    });
+    
+    new storeLocator.Panel(panelDiv, {
+        view: view
+  });
+});
