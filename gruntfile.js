@@ -64,6 +64,9 @@ module.exports = function(grunt) {
 	    // and a destination file to write the output
 	    targethtml: {
 	      dist: {
+	      	options: {
+	      		curlyTags: { pkgVersion: '<%= pkg.version %>' }
+	      	},
 	        files: {
 			  '<%= build.dest %>/index.php' : 'index.php',
 			  '<%= build.dest %>/about.php' : 'about.php',
@@ -85,9 +88,10 @@ module.exports = function(grunt) {
 	        }
 	      }
 	    },
+
 	    // clean task
 	    // remove every file from the defined folders
-	    // clean: ["<%= build.dest %>"],
+	    clean: ["<%= build.dest %>"],
 
 	    // watch task
 	    // runs the defined tasks every time a watched file is updated
@@ -123,6 +127,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -133,5 +138,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default',['watch']);
-	grunt.registerTask('dist', ['cssmin', 'concat', 'uglify', 'targethtml']);
+	grunt.registerTask('dist', ['clean', 'cssmin', 'concat', 'uglify', 'targethtml']);
 };

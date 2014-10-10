@@ -1,6 +1,3 @@
-/* scripts.js */
-
-
 var map;
 var xml;
 var markers = [];

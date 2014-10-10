@@ -12,16 +12,34 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="css/html5-reset.css">
+    
+
+    <!--(if target dev)><!-->
+    <link rel="stylesheet" type="text/css" href="css/html5-reset.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <!--<!(endif)-->
+
+    <!--(if target dist)>
+      <link rel="stylesheet" type="text/css" href="css/html5-reset.min.css">
+      <link rel="stylesheet" type="text/css" href="css/styles.min.css">
+    <!(endif)-->
+
     <!-- <link rel="stylesheet/less" type="text/css" href="css/styles.less"> -->
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&libraries=places"></script>
     <script src="js/markercluster.js"></script>
-    <script src="js/map.js"></script>
+    
     <script src="js/jquery.cookie.js"></script>
     <!-- <script src="js/less-1.3.0.min.js"></script> -->
+
+    <!--(if target dev)><!-->
+    <script src="js/map.js"></script>
+    <!--<!(endif)-->
+
+    <!--(if target dist)>
+    <script src="js/parkcompass-app.{{pkgVersion}}.js"></script>
+    <!(endif)-->
     
     <script type="text/javascript">
 
