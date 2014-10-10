@@ -69,7 +69,10 @@ module.exports = function(grunt) {
 	    targethtml: {
 	      dist: {
 	      	options: {
-	      		curlyTags: { pkgVersion: '<%= pkg.version %>' }
+	      		curlyTags: {
+	      			pkgName: '<%= pkg.name ?>',
+	      			pkgVersion: '<%= pkg.version %>'
+	      		}
 	      	},
 	        files: {
 			  '<%= build.dest %>/index.php' : 'index.php',
@@ -102,21 +105,9 @@ module.exports = function(grunt) {
 	    // runs the defined tasks every time a watched file is updated
 
 		sass: {
-		    dist: {
-		        options: {
-		            style: 'compressed',
-		            require: ['./sass/helpers/url64.rb']
-		        },
-		        expand: true,
-		        cwd: 'sass/',
-		        src: ['**/*.scss'],
-		        dest: '<%= build.dest %>/css',
-		        ext: '.<%= pkg.version %>.min.css'
-		    },
 		    dev: {
 		        options: {
 		            style: 'expanded',
-		            debugInfo: true,
 		            lineNumbers: true,
 		            require: ['./sass/helpers/url64.rb']
 		        },
@@ -126,6 +117,13 @@ module.exports = function(grunt) {
 		        dest: 'css/',
 		        ext: '.css'
 		    }
+		},
+		cssmin: {
+		  dist: {
+		    files: {
+		      '<%= build.dest %>/css/<%= pkg.name %>.<%= pkg.version %>.min.css' : ['css/html5-reset.css', 'css/styles.css', 'css/!*.min.css', 'css/!*.css.map'],
+		    }
+		  }
 		},
 		watch: {
 			css: {
@@ -151,5 +149,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default',['watch']);
-	grunt.registerTask('dist', ['clean', 'sass:dist', 'concat', 'uglify', 'targethtml']);
+	grunt.registerTask('dist', ['clean', 'cssmin', 'concat', 'uglify', 'targethtml']);
 };

@@ -13,8 +13,7 @@
 
     <!--(if target dev)><!--><link rel="stylesheet" type="text/css" href="css/html5-reset.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css"><!--<!(endif)-->
-    <!--(if target dist)><link rel="stylesheet" type="text/css" href="css/html5-reset.{{pkgVersion}}.min.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.{{pkgVersion}}.min.css"><!(endif)-->
+    <!--(if target dist)><link rel="stylesheet" type="text/css" href="css/{{pkgName}}.{{pkgVersion}}.min.css"><!(endif)-->
 
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -25,10 +24,9 @@
     <script src="js/markercluster.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <!--<!(endif)-->
-
     <!--(if target dist)>
-    <script src="js/parkcompass-libs.{{pkgVersion}}.min.js"></script>
-    <script src="js/parkcompass-app.{{pkgVersion}}.min.js"></script>
+    <script src="js/{{pkgName}}-libs.{{pkgVersion}}.min.js"></script>
+    <script src="js/{{pkgName}}-app.{{pkgVersion}}.min.js"></script>
     <!(endif)-->
     
     <script type="text/javascript">

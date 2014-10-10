@@ -1,16 +1,16 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\000031}}
+/* line 1, ../sass/_global.scss */
 body, html {
   height: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\000033}}
+/* line 3, ../sass/_global.scss */
 h1 {
   color: #fff;
   font-size: 32px;
   font-family: 'cabin','helvetica neue','helvetica','arial','sans-serif';
   font-weight: 500;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\000039}}
+/* line 9, ../sass/_global.scss */
 h1 span {
   display: block;
   position: absolute;
@@ -21,18 +21,18 @@ h1 span {
   height: 32px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000320}}
+/* line 20, ../sass/_global.scss */
 nav, h2, h3, h4 {
   font-family: 'cabin','helvetica neue','helvetica','arial','sans-serif';
   font-weight: 400;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000325}}
+/* line 25, ../sass/_global.scss */
 p, li {
   font-family: 'helvetica neue','helvetica','arial','sans-serif';
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000331}}
+/* line 31, ../sass/_global.scss */
 header {
   position: fixed;
   top: 0;
@@ -51,7 +51,7 @@ header {
   background-image: linear-gradient(90deg, #313131 0, #454545 64.99%, #4f4f4f 100%);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000349}}
+/* line 49, ../sass/_global.scss */
 header h1 {
   background: transparent url(../img/logo.png) left center no-repeat;
   padding-left: 35px;
@@ -59,30 +59,30 @@ header h1 {
   margin: 8px 0 0 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000356}}
+/* line 56, ../sass/_global.scss */
 header a {
   color: #fff;
   text-decoration: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000361}}
+/* line 61, ../sass/_global.scss */
 header nav {
   float: right;
   margin: 15px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000366}}
+/* line 66, ../sass/_global.scss */
 header nav a {
   margin: 0 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000370}}
+/* line 70, ../sass/_global.scss */
 header nav a img {
   position: relative;
   top: 2px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000375}}
+/* line 75, ../sass/_global.scss */
 #sidebar_backing {
   position: fixed;
   right: 0;
@@ -94,7 +94,7 @@ header nav a img {
   background: transparent url(../img/rose.png) bottom right no-repeat;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000386}}
+/* line 86, ../sass/_global.scss */
 #sidebar {
   position: absolute;
   right: 0;
@@ -104,7 +104,7 @@ header nav a img {
   z-index: 5;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\0000395}}
+/* line 95, ../sass/_global.scss */
 #sidebar #location_search_area {
   position: relative;
   max-width: 100%;
@@ -122,7 +122,7 @@ header nav a img {
   background-image: linear-gradient(90deg, #dfe0e3 0, #fff 100%);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003112}}
+/* line 112, ../sass/_global.scss */
 #sidebar #location_search_area #geolocate_btn {
   position: relative;
   margin: 10px 0;
@@ -157,26 +157,26 @@ header nav a img {
   background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.17) 0, rgba(255, 255, 255, 0.17) 100%);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003146}}
+/* line 146, ../sass/_global.scss */
 #sidebar #location_search_area #geolocate_btn:active {
   top: 2px;
   box-shadow: none;
   background: #ce0e0e;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003152}}
+/* line 152, ../sass/_global.scss */
 #sidebar #location_search_area #geolocate_btn img {
   position: absolute;
   left: 25px;
   top: 9px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003158}}
+/* line 158, ../sass/_global.scss */
 #sidebar #location_search_area #location_search_bar {
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003162}}
+/* line 162, ../sass/_global.scss */
 #sidebar #location_search_area #location_search_bar input[type=text] {
   width: 277px;
   font: 14px 'helvetica neue',helvetica,arial,sans-serif;
@@ -198,7 +198,7 @@ header nav a img {
   outline: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003183}}
+/* line 183, ../sass/_global.scss */
 #sidebar #location_search_area #location_search_bar #location_search_submit {
   position: absolute;
   right: -4px;
@@ -214,7 +214,7 @@ header nav a img {
   outline: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003198}}
+/* line 198, ../sass/_global.scss */
 #sidebar #location_search_area #filter_facilities_btn {
   display: block;
   width: 315px;
@@ -232,12 +232,12 @@ header nav a img {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003215}}
+/* line 215, ../sass/_global.scss */
 #sidebar #location_search_area #filter_facilities_btn:hover {
   color: #5e5e5e;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003219}}
+/* line 219, ../sass/_global.scss */
 #sidebar #location_search_area #filter_facilities_btn img {
   margin-bottom: 2px;
   margin-left: 10px;
@@ -245,7 +245,7 @@ header nav a img {
   transition: .2s;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003226}}
+/* line 226, ../sass/_global.scss */
 #sidebar #location_search_area #filter_facilities_btn .triangle_down {
   margin-bottom: 0;
   -webkit-transform: rotate(90deg);
@@ -257,7 +257,7 @@ header nav a img {
   transition: .2s;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003237}}
+/* line 237, ../sass/_global.scss */
 #sidebar #location_search_area #remove_all_filters_btn {
   position: absolute;
   bottom: 14px;
@@ -269,7 +269,7 @@ header nav a img {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003248}}
+/* line 248, ../sass/_global.scss */
 #sidebar #facilities_flyout {
   max-width: 100%;
   min-height: 100px;
@@ -282,7 +282,7 @@ header nav a img {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003260}}
+/* line 260, ../sass/_global.scss */
 #sidebar #facilities_flyout a {
   display: inline-block;
   padding: 3px 5px;
@@ -298,19 +298,19 @@ header nav a img {
   text-decoration: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003275}}
+/* line 275, ../sass/_global.scss */
 #sidebar #facilities_flyout a:hover {
   color: #fff;
   background: #3e3e3e;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003280}}
+/* line 280, ../sass/_global.scss */
 #sidebar #facilities_flyout .facility_selected {
   background: #ffc22d;
   color: #fff;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003285}}
+/* line 285, ../sass/_global.scss */
 #sidebar #search_results_wrap .search_result {
   list-style-type: none;
   background: transparent url(../img/results_tree.png) 15px center no-repeat;
@@ -319,7 +319,7 @@ header nav a img {
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003293}}
+/* line 293, ../sass/_global.scss */
 #sidebar #search_results_wrap .search_result h2 {
   padding: 16px 0;
   padding-left: 45px;
@@ -329,25 +329,25 @@ header nav a img {
   text-overflow: ellipsis;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003302}}
+/* line 302, ../sass/_global.scss */
 #sidebar #search_results_wrap .search_result h2:last-child {
   position: absolute;
   top: 0;
   right: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003308}}
+/* line 308, ../sass/_global.scss */
 #sidebar #search_results_wrap .search_result:hover {
   background-color: #e5e5e5;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003312}}
+/* line 312, ../sass/_global.scss */
 #sidebar #search_results_wrap .search_result:active {
   background-color: #3e3e3e;
   color: #fff;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003317}}
+/* line 317, ../sass/_global.scss */
 #sidebar #search_results_wrap #showing_results_for {
   color: #fff;
   background: #3e3e3e;
@@ -356,12 +356,12 @@ header nav a img {
   font-weight: 700;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003325}}
+/* line 325, ../sass/_global.scss */
 #sidebar #search_results_wrap #showing_results_for span {
   font-weight: 400;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003329}}
+/* line 329, ../sass/_global.scss */
 #map_frame {
   position: fixed;
   top: 50px;
@@ -372,13 +372,13 @@ header nav a img {
   z-index: 3;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003339}}
+/* line 339, ../sass/_global.scss */
 #map_frame #map_canvas {
   height: 100%;
   margin-right: 335px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003344}}
+/* line 344, ../sass/_global.scss */
 #help_modal_screen_cover {
   background-size: cover;
   background: rgba(0, 0, 0, 0.5);
@@ -391,7 +391,7 @@ header nav a img {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003356}}
+/* line 356, ../sass/_global.scss */
 #help_modal_screen_cover.help_modal_minimize {
   background: transparent;
   -webkit-transition: all 500ms cubic-bezier(0, 0, 0, 0.98);
@@ -402,12 +402,12 @@ header nav a img {
   transition: all 500ms cubic-bezier(0, -0.355, 0, 0.98);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003366}}
+/* line 366, ../sass/_global.scss */
 .help_modal {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003370}}
+/* line 370, ../sass/_global.scss */
 #help_modal {
   width: 412px;
   height: 712px;
@@ -425,7 +425,7 @@ header nav a img {
   transition: all 500ms cubic-bezier(0, -0.355, 0, 0.98);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003387}}
+/* line 387, ../sass/_global.scss */
 #help_modal.help_modal_minimize {
   width: 10px;
   height: 10px;
@@ -441,7 +441,7 @@ header nav a img {
   margin-right: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003402}}
+/* line 402, ../sass/_global.scss */
 #help_modal.help_modal_minimize #help_modal_close {
   height: 5px;
   bottom: 0;
@@ -451,7 +451,7 @@ header nav a img {
   right: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003411}}
+/* line 411, ../sass/_global.scss */
 #help_modal #help_modal_close {
   position: absolute;
   right: 50%;
@@ -488,29 +488,29 @@ header nav a img {
   background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.17) 0, rgba(255, 255, 255, 0.17) 100%);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003447}}
+/* line 447, ../sass/_global.scss */
 #help_modal #help_modal_close:active {
   bottom: 8px;
   box-shadow: none;
   background: #085430;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003453}}
+/* line 453, ../sass/_global.scss */
 #map_canvas .infowindow {
   max-width: 300px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003457}}
+/* line 457, ../sass/_global.scss */
 #map_canvas .infowindow h2 {
   font-size: 24px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003461}}
+/* line 461, ../sass/_global.scss */
 #map_canvas .infowindow p {
   font-size: 12px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003465}}
+/* line 465, ../sass/_global.scss */
 #map_canvas .infowindow ul li {
   display: inline-block;
   padding: 3px 5px;
@@ -525,7 +525,7 @@ header nav a img {
   color: #3e3e3e;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003479}}
+/* line 479, ../sass/_global.scss */
 #map_canvas .infowindow ul li span {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -538,7 +538,7 @@ header nav a img {
   margin-left: 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003491}}
+/* line 491, ../sass/_global.scss */
 #map_canvas .infowindow a {
   float: right;
   margin-bottom: 3px;
@@ -572,14 +572,14 @@ header nav a img {
   background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.17) 0, rgba(255, 255, 255, 0.17) 100%);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003524}}
+/* line 524, ../sass/_global.scss */
 #map_canvas .infowindow a:active {
   bottom: 8px;
   box-shadow: none;
   background: #085430;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003530}}
+/* line 530, ../sass/_global.scss */
 #map_canvas .infowindow .parkLink {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -590,26 +590,26 @@ header nav a img {
   padding: 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003540}}
+/* line 540, ../sass/_global.scss */
 #about_body {
   background: url(../img/about_bg_trim.png) left 420px repeat-x, url(../img/about_bg3.jpg) top center no-repeat, url(../img/about_bg_brilliant.png) repeat;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003544}}
+/* line 544, ../sass/_global.scss */
 #container {
   max-width: 960px;
   margin: 280px auto 30px;
   padding: 0 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003550}}
+/* line 550, ../sass/_global.scss */
 #container h2 {
   font-size: 42px;
   color: #fff;
   text-shadow: 0 0 8px black,0px 0 8px #000;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003556}}
+/* line 556, ../sass/_global.scss */
 #container h3 {
   font-size: 24px;
   line-height: 32px;
@@ -627,26 +627,26 @@ header nav a img {
   background-image: linear-gradient(90deg, #dfe0e3 0, #f6f6f6 100%);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003573}}
+/* line 573, ../sass/_global.scss */
 #container h4 {
   font-size: 20px;
   line-height: 32px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003578}}
+/* line 578, ../sass/_global.scss */
 #container li {
   margin-left: 20px;
   margin-bottom: 10px;
   line-height: 1.2em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003584}}
+/* line 584, ../sass/_global.scss */
 #container p {
   margin-bottom: 10px;
   line-height: 1.2em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003589}}
+/* line 589, ../sass/_global.scss */
 #container #banner h1 {
   color: #fff;
   font-size: 78px;
@@ -654,36 +654,36 @@ header nav a img {
   text-shadow: 0 0 8px #000;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003596}}
+/* line 596, ../sass/_global.scss */
 #container #about {
   margin-bottom: 60px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003600}}
+/* line 600, ../sass/_global.scss */
 #container #help h4 {
   display: block;
   border-bottom: 3px double #dedada;
   margin-bottom: 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003606}}
+/* line 606, ../sass/_global.scss */
 #container #help .help_item {
   padding: 10px;
   margin-bottom: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003611}}
+/* line 611, ../sass/_global.scss */
 #container #features {
   margin-top: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003615}}
+/* line 615, ../sass/_global.scss */
 #container #features div {
   height: 200px;
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003620}}
+/* line 620, ../sass/_global.scss */
 #container #features h4 {
   display: block;
   width: 100px;
@@ -695,7 +695,7 @@ header nav a img {
   margin-left: -50px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003631}}
+/* line 631, ../sass/_global.scss */
 #container #features img {
   display: block;
   margin: 0;
@@ -705,12 +705,12 @@ header nav a img {
   left: 50%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003640}}
+/* line 640, ../sass/_global.scss */
 #container #contact label {
   font-family: 'cabin','helvetica neue','helvetica','arial','sans-serif';
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003644}}
+/* line 644, ../sass/_global.scss */
 #container #contact #twitter {
   display: block;
   font-size: 32px;
@@ -723,12 +723,12 @@ header nav a img {
   font-family: 'helvetica neue','helvetica','arial','sans-serif';
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003657}}
+/* line 657, ../sass/_global.scss */
 #container #contact #twitter:hover {
   color: #20b1e8;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003661}}
+/* line 661, ../sass/_global.scss */
 #container #contact #email {
   background: none;
   font-family: 'helvetica neue','helvetica','arial','sans-serif';
@@ -736,18 +736,18 @@ header nav a img {
   font-size: 26px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003669}}
+/* line 669, ../sass/_global.scss */
 #container #contact #email a {
   color: #3e3e3e;
   text-decoration: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003674}}
+/* line 674, ../sass/_global.scss */
 #container #contact #email a:hover {
   color: #20b1e8;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003678}}
+/* line 678, ../sass/_global.scss */
 #container #contact input[type=text], #container #contact input[type=email], #container #contact textarea {
   width: 87%;
   font: 14px 'helvetica neue',helvetica,arial,sans-serif;
@@ -769,7 +769,7 @@ header nav a img {
   outline: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003699}}
+/* line 699, ../sass/_global.scss */
 #container #contact input[type=submit] {
   position: relative;
   margin: 10px 0;
@@ -804,14 +804,14 @@ header nav a img {
   background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.17) 0, rgba(255, 255, 255, 0.17) 100%);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003733}}
+/* line 733, ../sass/_global.scss */
 #container #contact input[type=submit]:active {
   top: 2px;
   box-shadow: none;
   background: #ce0e0e;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003739}}
+/* line 739, ../sass/_global.scss */
 footer {
   background: #3e3e3e;
   padding: 0 10px;
@@ -819,17 +819,17 @@ footer {
   margin-top: 30px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003746}}
+/* line 746, ../sass/_global.scss */
 footer p.span_8_of_12 {
   text-align: right;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003750}}
+/* line 750, ../sass/_global.scss */
 footer p.span_8_of_12 a {
   color: #fcb400;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003754}}
+/* line 754, ../sass/_global.scss */
 footer p.span_8_of_12 span {
   display: inline-block;
   background: transparent url(../img/canada.png) center center no-repeat;
@@ -837,162 +837,162 @@ footer p.span_8_of_12 span {
   height: 14px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003761}}
+/* line 761, ../sass/_global.scss */
 .col {
   display: block;
   float: left;
   margin: 1% 0 1% 1.6%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003767}}
+/* line 767, ../sass/_global.scss */
 .col:first-child {
   margin-left: 0;
 }
 
 @media only screen and (max-width: 480px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003772}}
+  /* line 772, ../sass/_global.scss */
   .col {
     margin: 1% 0;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003777}}
+/* line 777, ../sass/_global.scss */
 .span_12_of_12 {
   width: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003781}}
+/* line 781, ../sass/_global.scss */
 .span_11_of_12 {
   width: 91.46%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003785}}
+/* line 785, ../sass/_global.scss */
 .span_10_of_12 {
   width: 83%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003789}}
+/* line 789, ../sass/_global.scss */
 .span_9_of_12 {
   width: 74.54%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003793}}
+/* line 793, ../sass/_global.scss */
 .span_8_of_12 {
   width: 66.08%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003797}}
+/* line 797, ../sass/_global.scss */
 .span_7_of_12 {
   width: 57.62%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003801}}
+/* line 801, ../sass/_global.scss */
 .span_6_of_12 {
   width: 49.16%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003805}}
+/* line 805, ../sass/_global.scss */
 .span_5_of_12 {
   width: 40.7%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003809}}
+/* line 809, ../sass/_global.scss */
 .span_4_of_12 {
   width: 32.24%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003813}}
+/* line 813, ../sass/_global.scss */
 .span_3_of_12 {
   width: 23.78%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003817}}
+/* line 817, ../sass/_global.scss */
 .span_2_of_12 {
   width: 15.32%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003821}}
+/* line 821, ../sass/_global.scss */
 .span_1_of_12 {
   width: 6.86%;
 }
 
 @media only screen and (max-width: 480px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003826}}
+  /* line 826, ../sass/_global.scss */
   .span_12_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003830}}
+  /* line 830, ../sass/_global.scss */
   .span_11_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003834}}
+  /* line 834, ../sass/_global.scss */
   .span_10_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003838}}
+  /* line 838, ../sass/_global.scss */
   .span_9_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003842}}
+  /* line 842, ../sass/_global.scss */
   .span_8_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003846}}
+  /* line 846, ../sass/_global.scss */
   .span_7_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003850}}
+  /* line 850, ../sass/_global.scss */
   .span_6_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003854}}
+  /* line 854, ../sass/_global.scss */
   .span_5_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003858}}
+  /* line 858, ../sass/_global.scss */
   .span_4_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003862}}
+  /* line 862, ../sass/_global.scss */
   .span_3_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003866}}
+  /* line 866, ../sass/_global.scss */
   .span_2_of_12 {
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003870}}
+  /* line 870, ../sass/_global.scss */
   .span_1_of_12 {
     width: 100%;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003875}}
+/* line 875, ../sass/_global.scss */
 .group:before, .group:after {
   content: "";
   display: table;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003880}}
+/* line 880, ../sass/_global.scss */
 .group:after {
   clear: both;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003884}}
+/* line 884, ../sass/_global.scss */
 .span_12_of_12, .span_9_of_12, .span_3_of_12 {
   background: rgba(0, 0, 0, 0.3);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Sites\/parkcompass\/sass\/_global\.scss}line{font-family:\00003888}}
+/* line 888, ../sass/_global.scss */
 .span_3_of_12 {
   min-width: 200px;
 }

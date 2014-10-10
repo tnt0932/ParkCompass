@@ -12,18 +12,16 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 
     
-    <link rel="stylesheet" type="text/css" href="css/html5-reset.1.0.0.min.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.1.0.0.min.css">
+    <link rel="stylesheet" type="text/css" href="css/<%= pkg.name ?>.1.0.0.min.css">
 
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&libraries=places"></script>
 
     
-
     
-    <script src="js/parkcompass-libs.1.0.0.min.js"></script>
-    <script src="js/parkcompass-app.1.0.0.min.js"></script>
+    <script src="js/<%= pkg.name ?>-libs.1.0.0.min.js"></script>
+    <script src="js/<%= pkg.name ?>-app.1.0.0.min.js"></script>
     
     
     <script type="text/javascript">
