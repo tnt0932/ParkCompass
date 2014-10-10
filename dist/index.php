@@ -8,20 +8,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="description" content="The easiest way to discover Vancouver's parks. Park Compass helps you find parks in Vancouver using geolocation, search, and filtering by park facility."/>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 
     
     <link rel="stylesheet" type="text/css" href="css/html5-reset.1.0.0.min.css">
-      <link rel="stylesheet" type="text/css" href="css/styles.1.0.0.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.1.0.0.min.css">
 
-    <!-- <link rel="stylesheet/less" type="text/css" href="css/styles.less"> -->
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&libraries=places"></script>
-    <!-- <script src="js/less-1.3.0.min.js"></script> -->
 
     
 

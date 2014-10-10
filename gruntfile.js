@@ -104,7 +104,7 @@ module.exports = function(grunt) {
 		sass: {
 		    dist: {
 		        options: {
-		            style: 'minified',
+		            style: 'compressed',
 		            require: ['./sass/helpers/url64.rb']
 		        },
 		        expand: true,
