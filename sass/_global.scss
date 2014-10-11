@@ -1,9 +1,12 @@
+$font-body: 'helvetica neue','helvetica','arial','sans-serif';
+$font-heading: 'cabin','helvetica neue','helvetica','arial','sans-serif';
+
 body,html { height:100%; }
 
 h1 {
 	color:#fff;
 	font-size:32px;
-	font-family:'cabin','helvetica neue','helvetica','arial','sans-serif';
+	font-family: $font-heading;
 	font-weight:500;
 	
 	span {
@@ -18,12 +21,12 @@ h1 {
 }
 
 nav,h2,h3,h4 {
-	font-family:'cabin','helvetica neue','helvetica','arial','sans-serif';
+	font-family:$font-heading;
 	font-weight:400;
 }
 
 p,li {
-	font-family:'helvetica neue','helvetica','arial','sans-serif';
+	font-family:$font-body;
 }
 
 
@@ -638,7 +641,7 @@ header nav a img {
 }
 
 #container #contact label {
-	font-family:'cabin','helvetica neue','helvetica','arial','sans-serif';
+	font-family:$font-heading;
 }
 
 #container #contact #twitter {
@@ -650,7 +653,7 @@ header nav a img {
     text-decoration: none;
     border-bottom: 3px double #dedada;
     color: #3e3e3e;
-    font-family: 'helvetica neue','helvetica','arial','sans-serif';
+    font-family: $font-body;
     
 }
 
@@ -661,7 +664,7 @@ header nav a img {
 #container #contact #email {
     background: none;
     
-    font-family: 'helvetica neue','helvetica','arial','sans-serif';
+    font-family: $font-body;
     box-shadow: none;
     font-size: 26px;
 }
