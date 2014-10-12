@@ -1,6 +1,4 @@
-<?php
-    require_once("db_config.php");
-?>
+<?php require_once("db_config.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,40 +26,33 @@
     <script src="js/{{pkgName}}-libs.{{pkgVersion}}.min.js"></script>
     <script src="js/{{pkgName}}-app.{{pkgVersion}}.min.js"></script>
     <!(endif)-->
-    
-    <script type="text/javascript">
 
+    <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-35575781-1']);
         _gaq.push(['_trackPageview']);
-        
         (function() {
             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-    
     </script>
 </head>
 
 <body>
 <!-- //////////////////////////////////////////////////////
-                    HEADER
-    /////////////////////////////////////////////////////////--> 
-    
-    <header>
-        <h1><a href="/">PARK COMPASS</a><span></span></h1>
-        <nav>
-            <a href="about">about</a>
-            <a href="#"><img src="img/info_icon.png" width="17" height="17" alt="info"></a>
-        </nav>
-    </header>
-    
-<!-- //////////////////////////////////////////////////////
                     SIDEBAR
     /////////////////////////////////////////////////////////--> 
     
     <section id="sidebar">
+
+        <header>
+            <h1><a href="/">PARK COMPASS</a></h1>
+            <nav>
+               <!--  <a href="about">about</a> -->
+                <a href="#"><img src="img/info_icon.png" width="17" height="17" alt="info"></a>
+            </nav>
+        </header>
 
         <section id="location_search_area"><!-- locate/search -->
             <a href="#" id="geolocate_btn"><img src="img/geolocate_icon.png" width="28" height="28" alt="geolocate icon">Find Parks Near You</a>
@@ -71,7 +62,7 @@
                 <input type="button" onclick="searchLocations()" value="Search" id="location_search_submit"/>
             </div>
             
-            <a href="#" id="filter_facilities_btn">Filter by Facility<img src="img/faciltiy_triangle.png" width="6" height="11" id="facility_triangle"></a><!-- TODO: Correct spelling of FACILITY in the src! -->
+            <a href="#" id="filter_facilities_btn">Filter by Facility<img src="img/faciltiy_triangle.png" width="6" height="11" id="facility_triangle" class="triangle_down"></a><!-- TODO: Correct spelling of FACILITY in the src! -->
             <a href="#" id="remove_all_filters_btn">remove all filters</a> <!-- hidden until a facility tag is selected -->
         </section>
         
@@ -105,6 +96,10 @@
             <p id="showing_results_for">Showing results near: <span id="showing_results_for_span"></span></p>
             <ul id="search_results_list" style="width:100%;visibility:hidden"></ul>
         </section>
+
+        <footer>
+        <a href="http://github.com/tnt0932/parkcompass">View on Github</a> | Data Sources: <a href="http://vancouver.ca/your-government/open-data-catalogue.aspx" target="_blank">Vancouver</a>, <a href="http://www.geoweb.dnv.org/" target="_blank">North Vancouver</a>
+        </footer>
         
     </section>
     
@@ -118,6 +113,10 @@
     <div id="map_frame">
         <div id="map_canvas"></div>
     </div>
+
+    <footer>
+        <a href="http://github.com/tnt0932/parkcompass">View on Github</a> | Data Sources: <a href="http://vancouver.ca/your-government/open-data-catalogue.aspx" target="_blank">Vancouver</a>, <a href="http://www.geoweb.dnv.org/" target="_blank">North Vancouver</a>
+    </footer>
 
     
 <!-- //////////////////////////////////////////////////////

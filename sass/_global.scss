@@ -4,20 +4,7 @@ $font-heading: 'cabin','helvetica neue','helvetica','arial','sans-serif';
 body,html { height:100%; }
 
 h1 {
-	color:#fff;
-	font-size:32px;
-	font-family: $font-heading;
-	font-weight:500;
-	
-	span {
-		display:block;
-		position:absolute;
-		top:-1px;
-		right:2px;
-		background:url(../img/beta.png) no-repeat;
-		width:33px;
-		height:32px;
-	}
+
 }
 
 nav,h2,h3,h4 {
@@ -32,10 +19,8 @@ p,li {
 
 
 header {
-	position:fixed;
-	top:0;
+	
 	width:100%;
-	height:50px;
 	z-index:6;
 	border:1px solid #191919;
 	background-color:#fff;
@@ -47,13 +32,19 @@ header {
 	background-image:-o-linear-gradient(90deg,#313131 0,#454545 64.99%,#4f4f4f 100%);
 	background-image:-webkit-linear-gradient(90deg,#313131 0,#454545 64.99%,#4f4f4f 100%);
 	background-image:linear-gradient(90deg,#313131 0,#454545 64.99%,#4f4f4f 100%);
+	text-align: center;
+	position: relative;
+	padding: 10px;
 }
 
 header h1 {
 	background:transparent url(../img/logo.png) left center no-repeat;
-	padding-left:35px;
-	float:left;
-	margin:8px 0 0 10px;
+	background-size: 18px;
+	padding-left:23px;
+	font-size:18px;
+	font-family: $font-heading;
+	font-weight:500;
+	display: inline;
 }
 
 header a {
@@ -62,23 +53,15 @@ header a {
 }
 
 header nav {
-	float:right;
-	margin:15px;
-}
-
-header nav a {
-	margin:0 10px;
-}
-
-header nav a img {
-	position:relative;
-	top:2px;
+	position: absolute;
+	right: 15px;
+	top: 12px;
 }
 
 #sidebar_backing {
 	position:fixed;
 	right:0;
-	top:50px;
+	top:0;
 	bottom:0;
 	width:335px;
 	z-index:4;
@@ -89,7 +72,7 @@ header nav a img {
 #sidebar {
 	position:absolute;
 	right:0;
-	top:50px;
+	top:0;
 	bottom:0;
 	width:335px;
 	z-index:5;
@@ -257,7 +240,6 @@ header nav a img {
 	padding:10px;
 	padding-bottom:50px;
 	z-index:7;
-	display:none;
 }
 
 #sidebar #facilities_flyout a {
@@ -329,9 +311,20 @@ header nav a img {
 	font-weight:400;
 }
 
+#sidebar footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding: 5px 10px;
+	background: #f7f7f7;
+	color: #1a1a1a;
+	font-size: 12px;
+	font-family: $font-body;
+}
+
 #map_frame {
 	position:fixed;
-	top:50px;
+	top:0;
 	bottom:auto;
 	left:0;
 	width:100%;
