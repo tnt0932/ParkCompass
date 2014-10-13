@@ -89,7 +89,7 @@
     
         <section id="search_results_wrap"><!-- Search Results -->
             <p id="showing_results_for">Showing results near: <span id="showing_results_for_span"></span></p>
-            <ul id="search_results_list" style="width:100%;visibility:hidden"></ul>
+            <ul id="search_results_list" style="width:100%;"></ul>
         </section>
 
         <footer>
