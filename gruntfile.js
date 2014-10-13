@@ -90,6 +90,8 @@ module.exports = function(grunt) {
 	        files: {
 	          "<%= build.dest %>/json_gen.php": "json_gen.php",
 	          "<%= build.dest %>/": "img/**",
+	          "<%= build.dest %>/db_connect.php": "db_connect.php",
+
 	          // "<%= build.dest %>/tests/": ["tests/js/**", "tests/libs/**"],
 	          // "<%= build.dest %>/gallery_data.json": "gallery_data.json"
 	        }
