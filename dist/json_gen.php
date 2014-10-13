@@ -47,13 +47,13 @@ header("Content-type: application/json");
 $parkID;
 //Create an array
 $json_response = array();
-$facilities;
-$jr;
-$count=-1;
+$facilities = array();
+
 while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	if ($row['pID'] != $parkID){
-		$parks = array(
-		 	'pID'       => $row['pID'],
+
+	    $json_response['parks'][$row['pID']] = array(
+	    	'pID'       => $row['pID'],
 		    'pName'     => $row['pName'],
 		    'pURL'      => $row['pURL'],
 		    'pAddress'  => $row['pAddress'],
@@ -65,24 +65,30 @@ while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
             'nID'       => $row['nID'],
             'nName'     => $row['nName'],
             'nURL'      => $row['nURL'],
-		);
-		$json_response['parks'][] = $parks;
-		$count++;
+	    );
+        $facilities = array(
+            'fID'       => $row['fID'],
+            'fType'     => $row['fType'],
+            'fURL'      => $row['fURL'],
+            'fQuan'     => $row['fQuan'],
+            'pfID'      => $row['pfID'],
+        );
+		
+
+	} else {
+        $facilities = array(
+            'fID'       => $row['fID'],
+            'fType'     => $row['fType'],
+            'fURL'      => $row['fURL'],
+            'fQuan'     => $row['fQuan'],
+            'pfID'      => $row['pfID'],
+        );
 	}
- 	$facility = array(
-	 	'fID'       => $row['fID'],
-        'fType'     => $row['fType'],
-        'fURL'      => $row['fURL'],
-        'fQuan'     => $row['fQuan'],
-        'pfID'      => $row['pfID'],
- 	);
- 	$json_response['parks'][$count]['facilities'][] = $facility;
-
+	$json_response['parks'][$row['pID']]['facilities'][] = $facilities;
 	$parkID = $row['pID'];
-	
+    
+
 }
-
-
 
 echo json_encode($json_response, JSON_PRETTY_PRINT);
 

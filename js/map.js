@@ -35,7 +35,7 @@ function load(lat, lng) {
         }
     });
     infoWindow = new google.maps.InfoWindow();
-    search_result_list = document.getElementById('search_results_list');
+    search_result_list = $('#search_results_list');
 
     createUserMarker(map, userMarkerPosition);
     searchLocationsNear(userMarkerPosition);
@@ -61,25 +61,22 @@ function searchLocations() {
     });
 }
 
-
-
 function searchLocationsNear(args) {
     clearLocations();
     var radius = 100; //return all results in a 100km radius - basically, return all results
-    //console.log(userMarkerPosition.lat(), userMarkerPosition.lng(), radius);
-    var searchUrl = 'pc_genxml.php?lat=' + userMarkerPosition.lat() + '&lng=' + userMarkerPosition.lng() + '&radius=' + radius + '&filters=' + JSON.stringify(clickedFilters);
-    //console.log(searchUrl);
-    downloadUrl(searchUrl, function(data) {
-        var xml = parseXml(data);
-        getParksData(xml);
+    var jsonResponseURL = 'json_gen.php?lat=' + userMarkerPosition.lat() + '&lng=' + userMarkerPosition.lng() + '&radius=' + radius + '&filters=' + JSON.stringify(clickedFilters);
+
+    // Query generated JSON
+    $.getJSON(jsonResponseURL, function(jsonResponseData) {
+        parseParksJSON(jsonResponseData);
     });
 }
 
-function getParksData(xml) {
+function parseParksJSON(jsonResponseData) {
     var bounds = new google.maps.LatLngBounds();
-    var parkNodes = xml.documentElement.getElementsByTagName("park");
-    
-    if (parkNodes.length === 0) {
+    var parks = jsonResponseData.parks;
+
+    if (parks.length === 0) {
         userMarkerPosition = new google.maps.LatLng(49.25, -123.133333);
         alert('No Metro Vancouver parks found in that area. We\'re going to move your marker back to the heart of Vancouver!');
         clearUserMarker();
@@ -88,54 +85,52 @@ function getParksData(xml) {
         map.setCenter(userMarkerPosition);
         return;
     }
-    for (var i = 0; i < parkNodes.length; i++)  {
+    for (var i = 0; i < parks.length; i++)  {
         
         var facilitiesList = [];
-        var facility;
-        var facilities = parkNodes[i].childNodes;
+        var facilities = parks[i].facilities;
+
+        // for each facility, find their type & quantity and push it to facilitiesList
         for (var x = 0; x < facilities.length; x++) {
-            var fType = facilities[x].getAttribute("fType");
-            var fQuan = facilities[x].getAttribute("fQuan");
-            facility = [fType, fQuan];
-            facilitiesList.push(facility);
+            facilitiesList.push([facilities[x].fType, facilities[x].fQuan]);
         }
 
-        var name = parkNodes[i].getAttribute("pName");
-        var address = parkNodes[i].getAttribute("pAddress");
-        var neighbourhood = parkNodes[i].getAttribute("nName");
-        var url = parkNodes[i].getAttribute("slug");
-        var latlng = new google.maps.LatLng(
-        parseFloat(parkNodes[i].getAttribute("pLat")), parseFloat(parkNodes[i].getAttribute("pLng")));
-        var distance = parseFloat(parkNodes[i].getAttribute("distance"));
+        var name = parks[i].pName;
+        var address = parks[i].pAddress;
+        var neighbourhood = parks[i].nName;
+        var url = parks[i].slug;
+        var pID = parks[i].pID;
+        var latlng = new google.maps.LatLng( parseFloat(parks[i].pLat), parseFloat(parks[i].pLng));
+        var distance = parseFloat(parks[i].distance);
+
         createResults(name, distance, i);
-        createMarker(latlng, name, address, neighbourhood, facilitiesList, url);
+
+        createMarker(latlng, name, address, neighbourhood, facilitiesList, url, pID);
+
         bounds.extend(latlng);
     }
+
+    // Marker Clusterer
     var mcOptions = {
         maxZoom: 14,
         minimumClusterSize: 4
     };
+
     markerCluster = new MarkerClusterer(map, markers, mcOptions);
     markerClusterExists = true;
-    search_result_list.style.visibility = "visible";
-    search_result_list.onclick = function(e) {
+
+    search_result_list.click(function(e) {
         var markerNum = e.target.parentNode.id;
         google.maps.event.trigger(markers[markerNum], 'click');
-        //console.log(markerNum);
-    };
-
-    
+    }); 
 }
 
 
-// RESULTS LIST
 
+// Create the list of nearby parks
 function createResults(name, distance, num) {
-    var results = document.createElement("li");
-    results.id = num;
-    results.className = 'search_result';
-    results.innerHTML = '<h2>' + name + '</h2><h2>' + distance.toFixed(1) + 'km</h2>';
-    search_result_list.appendChild(results);
+    var results = '<li id="'+num+'" class="search_result"><h2>' + name + '</h2><h2>' + distance.toFixed(1) + 'km</h2></li>';
+    search_result_list.append(results);
 }
 
 
@@ -144,13 +139,14 @@ function showingResultsFor() {
     geocoder.geocode({'latLng': userMarkerPosition}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
-          document.getElementById('showing_results_for_span').innerHTML = (results[0].formatted_address);
+          $('#showing_results_for_span').html(results[0].formatted_address);
         }
       } else {
         alert("Geocoder failed due to: " + status);
       }
     });
 }
+
 
 // ===========================================
 //
@@ -195,7 +191,7 @@ function showingResultsFor() {
 //
 // ===========================================
 
-function createMarker(latlng, name, address, neighbourhood, facilitiesList, url) {
+function createMarker(latlng, name, address, neighbourhood, facilitiesList, url, pID) {
     var directions = 'http://maps.google.com/maps?saddr='+ userMarkerPosition +'&daddr='+ latlng;
     var link = 'http://parkcompass.com/'+url;
     var listHtml = '<ul>';
@@ -203,7 +199,7 @@ function createMarker(latlng, name, address, neighbourhood, facilitiesList, url)
         listHtml += '<li>'+facilitiesList[i][0]+'<span>'+facilitiesList[i][1]+'</span></li>';
     }
     listHtml += '</ul>';
-    var html = '<div class="infowindow"><h2>' + name + "</h2><br/><p>Address: <b>" + address + "</b></p><br/><p>Neighbourhood: <b>" + neighbourhood + "</b></p><br>" + listHtml + "<br><p>Share:<br><input type='text' value='"+link+"' onclick='this.select()' class='parkLink'><a href='" + directions + "' target='_blank'>Directions</a>";
+    var html = '<div class="infowindow"><div id="photo'+pID+'"></div><h2>' + name + "</h2><br/><p>Address: <b>" + address + "</b></p><br/><p>Neighbourhood: <b>" + neighbourhood + "</b></p><br>" + listHtml + "<br><p>Share:<br><input type='text' value='"+link+"' onclick='this.select()' class='parkLink'><a href='" + directions + "' target='_blank'>Directions</a>";
     var marker = new google.maps.Marker({
         map: map,
         position: latlng,
@@ -223,7 +219,7 @@ function clearLocations() {
         markers[i].setMap(null);
     }
     markers.length = 0;
-    search_result_list.innerHTML = "";
+    search_result_list.empty();
     if (markerClusterExists) {
         markerCluster.clearMarkers();
         markerClusterExists = false;
@@ -301,33 +297,3 @@ function geolocation() {
     map.setCenter(userMarkerPosition);
   }
 }
-
-// ===========================================
-//
-//                XML Functions
-//
-// ===========================================
-
-function downloadUrl(url, callback) {
-    var request = window.ActiveXObject ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request.responseText, request.status);
-        }
-    };
-    request.open('GET', url, true);
-    request.send(null);
-}
-
-function parseXml(str) {
-    if (window.ActiveXObject) {
-        var doc = new ActiveXObject('Microsoft.XMLDOM');
-        doc.loadXML(str);
-        return doc;
-    } else if (window.DOMParser) {
-        return (new DOMParser()).parseFromString(str, 'text/xml');
-    }
-}
-
-function doNothing() {}

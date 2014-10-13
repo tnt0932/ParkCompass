@@ -57,7 +57,7 @@ module.exports = function(grunt) {
 	      		banner: '<%= meta.banner %>'
 	      	},
 	      	files: {
-	      		'<%= build.dest %>/js/<%= pkg.name %>-libs.<%= pkg.version %>.min.js' : ['<%= concat.dist.dest %>'],
+	      		'<%= build.dest %>/js/<%= pkg.name %>-libs.<%= pkg.version %>.min.js' : ['<%= concat.libs.dest %>'],
 	      		'<%= build.dest %>/js/<%= pkg.name %>-app.<%= pkg.version %>.min.js' : ['<%= concat.dist.dest %>']
 	      	}
 	      }
@@ -70,8 +70,8 @@ module.exports = function(grunt) {
 	      dist: {
 	      	options: {
 	      		curlyTags: {
-	      			pkgName: '<%= pkg.name ?>',
-	      			pkgVersion: '<%= pkg.version %>'
+	      			'pkgName': '<%= pkg.name %>',
+	      			'pkgVersion': '<%= pkg.version %>'
 	      		}
 	      	},
 	        files: {
@@ -88,9 +88,9 @@ module.exports = function(grunt) {
 	    copy: {
 	      dist: {
 	        files: {
-	          // "<%= build.dest %>/css/": "css/**",
-	          // "<%= build.dest %>/img/gallery/": "img/gallery/**",
-	          // "<%= build.dest %>/js/libs/bootstrap/": "js/libs/bootstrap/**",
+	          "<%= build.dest %>/pc_genxml.php": "pc_genxml.php",
+	          "<%= build.dest %>/json_gen.php": "json_gen.php",
+	          "<%= build.dest %>/": "img/**",
 	          // "<%= build.dest %>/tests/": ["tests/js/**", "tests/libs/**"],
 	          // "<%= build.dest %>/gallery_data.json": "gallery_data.json"
 	        }
@@ -149,5 +149,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default',['watch']);
-	grunt.registerTask('dist', ['clean', 'cssmin', 'concat', 'uglify', 'targethtml']);
+	grunt.registerTask('dist', ['clean', 'copy', 'cssmin', 'concat', 'uglify', 'targethtml']);
 };

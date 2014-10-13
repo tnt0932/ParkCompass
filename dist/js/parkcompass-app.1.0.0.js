@@ -61,21 +61,24 @@ function searchLocations() {
     });
 }
 
-
-
 function searchLocationsNear(args) {
     clearLocations();
     var radius = 100; //return all results in a 100km radius - basically, return all results
     //console.log(userMarkerPosition.lat(), userMarkerPosition.lng(), radius);
-    var searchUrl = 'pc_genxml.php?lat=' + userMarkerPosition.lat() + '&lng=' + userMarkerPosition.lng() + '&radius=' + radius + '&filters=' + JSON.stringify(clickedFilters);
+    var searchURL = 'pc_genxml.php?lat=' + userMarkerPosition.lat() + '&lng=' + userMarkerPosition.lng() + '&radius=' + radius + '&filters=' + JSON.stringify(clickedFilters);
     //console.log(searchUrl);
-    downloadUrl(searchUrl, function(data) {
+    downloadUrl(searchURL, function(data) {
         var xml = parseXml(data);
         getParksData(xml);
     });
+
+    $.getJSON(searchURL, function(data) {
+        getParksData(data);
+    });
 }
 
-function getParksData(xml) {
+function getParksData(xml, data) {
+    console.log(data);
     var bounds = new google.maps.LatLngBounds();
     var parkNodes = xml.documentElement.getElementsByTagName("park");
     
@@ -104,11 +107,12 @@ function getParksData(xml) {
         var address = parkNodes[i].getAttribute("pAddress");
         var neighbourhood = parkNodes[i].getAttribute("nName");
         var url = parkNodes[i].getAttribute("slug");
+        var pID = parkNodes[i].getAttribute("pID");
         var latlng = new google.maps.LatLng(
         parseFloat(parkNodes[i].getAttribute("pLat")), parseFloat(parkNodes[i].getAttribute("pLng")));
         var distance = parseFloat(parkNodes[i].getAttribute("distance"));
         createResults(name, distance, i);
-        createMarker(latlng, name, address, neighbourhood, facilitiesList, url);
+        createMarker(latlng, name, address, neighbourhood, facilitiesList, url, pID);
         bounds.extend(latlng);
     }
     var mcOptions = {
@@ -123,7 +127,6 @@ function getParksData(xml) {
         google.maps.event.trigger(markers[markerNum], 'click');
         //console.log(markerNum);
     };
-
     
 }
 
@@ -195,7 +198,7 @@ function showingResultsFor() {
 //
 // ===========================================
 
-function createMarker(latlng, name, address, neighbourhood, facilitiesList, url) {
+function createMarker(latlng, name, address, neighbourhood, facilitiesList, url, pID) {
     var directions = 'http://maps.google.com/maps?saddr='+ userMarkerPosition +'&daddr='+ latlng;
     var link = 'http://parkcompass.com/'+url;
     var listHtml = '<ul>';
@@ -203,7 +206,7 @@ function createMarker(latlng, name, address, neighbourhood, facilitiesList, url)
         listHtml += '<li>'+facilitiesList[i][0]+'<span>'+facilitiesList[i][1]+'</span></li>';
     }
     listHtml += '</ul>';
-    var html = '<div class="infowindow"><h2>' + name + "</h2><br/><p>Address: <b>" + address + "</b></p><br/><p>Neighbourhood: <b>" + neighbourhood + "</b></p><br>" + listHtml + "<br><p>Share:<br><input type='text' value='"+link+"' onclick='this.select()' class='parkLink'><a href='" + directions + "' target='_blank'>Directions</a>";
+    var html = '<div class="infowindow"><div id="photo'+pID+'"></div><h2>' + name + "</h2><br/><p>Address: <b>" + address + "</b></p><br/><p>Neighbourhood: <b>" + neighbourhood + "</b></p><br>" + listHtml + "<br><p>Share:<br><input type='text' value='"+link+"' onclick='this.select()' class='parkLink'><a href='" + directions + "' target='_blank'>Directions</a>";
     var marker = new google.maps.Marker({
         map: map,
         position: latlng,

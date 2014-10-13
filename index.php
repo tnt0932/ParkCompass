@@ -94,7 +94,7 @@
     
         <section id="search_results_wrap"><!-- Search Results -->
             <p id="showing_results_for">Showing results near: <span id="showing_results_for_span"></span></p>
-            <ul id="search_results_list" style="width:100%;visibility:hidden"></ul>
+            <ul id="search_results_list" style="width:100%;"></ul>
         </section>
 
         <footer>
@@ -113,10 +113,6 @@
     <div id="map_frame">
         <div id="map_canvas"></div>
     </div>
-
-    <footer>
-        <a href="http://github.com/tnt0932/parkcompass">View on Github</a> | Data Sources: <a href="http://vancouver.ca/your-government/open-data-catalogue.aspx" target="_blank">Vancouver</a>, <a href="http://www.geoweb.dnv.org/" target="_blank">North Vancouver</a>
-    </footer>
 
     
 <!-- //////////////////////////////////////////////////////
