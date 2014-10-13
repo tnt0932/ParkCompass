@@ -88,7 +88,6 @@ module.exports = function(grunt) {
 	    copy: {
 	      dist: {
 	        files: {
-	          "<%= build.dest %>/pc_genxml.php": "pc_genxml.php",
 	          "<%= build.dest %>/json_gen.php": "json_gen.php",
 	          "<%= build.dest %>/": "img/**",
 	          // "<%= build.dest %>/tests/": ["tests/js/**", "tests/libs/**"],
