@@ -14,18 +14,6 @@
     <!--(if target dist)><link rel="stylesheet" type="text/css" href="css/{{pkgName}}.{{pkgVersion}}.min.css"><!(endif)-->
 
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&libraries=places"></script>
-
-    <!--(if target dev)><!-->
-    <script src="js/map.js"></script>
-    <script src="js/markercluster.js"></script>
-    <script src="js/jquery.cookie.js"></script>
-    <!--<!(endif)-->
-    <!--(if target dist)>
-    <script src="js/{{pkgName}}-libs.{{pkgVersion}}.min.js"></script>
-    <script src="js/{{pkgName}}-app.{{pkgVersion}}.min.js"></script>
-    <!(endif)-->
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -127,18 +115,29 @@
     <!-- //////////////////////////////////////////////////////
                     JAVASCRIPT
     /////////////////////////////////////////////////////////--> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&libraries=places"></script>
+
+    <!--(if target dev)><!-->
+    <script src="js/map.js"></script>
+    <script src="js/markercluster.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <!--<!(endif)-->
+    <!--(if target dist)>
+    <script src="js/{{pkgName}}-libs.{{pkgVersion}}.min.js"></script>
+    <script src="js/{{pkgName}}-app.{{pkgVersion}}.min.js"></script>
+    <!(endif)-->
     
     <script type="text/javascript">
         
         // adds autocomplete function to the main search bar
         function location_autocomplete() {
-            var defaultBounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(47.475123, - 135.28857),
-            new google.maps.LatLng(60.862735, - 54.725824));
             var input = document.getElementById('location_search_input');
-            var options = {
-                bounds: defaultBounds,
-            };
+            var options = { bounds: defaultBounds };
+            var defaultBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(47.475123, - 135.28857),
+                new google.maps.LatLng(60.862735, - 54.725824)
+            );
             autocomplete = new google.maps.places.Autocomplete(input, options);
         }
         

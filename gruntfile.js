@@ -126,10 +126,18 @@ module.exports = function(grunt) {
 		    }
 		  }
 		},
+		autoprefixer: {
+		  dev: {
+		    options: {
+		      browsers: ['last 3 versions', '> 1%', 'ie 8', 'ie 7']
+		    },
+		    src: 'css/styles.css',
+		  }
+		},
 		watch: {
 			css: {
 				files: '**/*.scss',
-				tasks: ['sass']
+				tasks: ['sass', 'autoprefixer']
 			},
 			jshint: {
 				files: '<%= jshint.files %>',
@@ -138,6 +146,7 @@ module.exports = function(grunt) {
 		}
 	});
 
+	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-concat');
