@@ -1,0 +1,372 @@
+@import "_variables.scss";
+
+header { font-size: 24px; }
+
+header #ol {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+header #or {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+.filter-count {
+  background: #e74c3c;
+  display: block;
+  font-size: 8px;
+  padding: 3px 0;
+  position: relative;
+  top: -30px;
+  left: 15px;
+  text-align: center;
+  width: 15px;
+  border-radius: 12px;
+}
+
+.filter-count.hidden {
+  display: none;
+}
+
+.drawer-title {
+  background: #cfd9db;
+  color: white;
+  display: block;
+  font-size: 24px;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#remove_all_filters_btn {
+  /* visibility: hidden; // hide until a facility tag is selected */
+  background: #e74c3c;
+  display: block;
+  color: white;
+  margin: 0 auto;
+  padding: 6px 0;
+  text-align: center;
+  width: 90%;
+  border-radius: 4px;
+}
+
+#facilities_flyout {
+  max-width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  padding-bottom: 50px;
+}
+
+#facilities_flyout a {
+  display: block;
+  padding: 5px 5px;
+  margin: 10px 2px;
+  background: #d7d7d7;
+  border-radius: 10px;
+  font: 500 13px $font-body;
+  color: #3e3e3e;
+  text-decoration: none;
+}
+
+#location_search_area {
+  position: absolute;
+  bottom: 80px;
+  width: 96%;
+  height: 55px;
+  z-index: 6;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+#location_search_area #location_search_bar {
+  padding-left: 160px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 101;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#location_search_area #location_search_bar input[type=text] {
+  display: block;
+  font: 14px "helvetica neue", "helvetica", "arial", "sans-serif";
+  border: none;
+  float: right;
+  width: 0;
+  background: none;
+  outline: none;
+  padding: 12px 10px;
+  border-radius: 4px;
+  box-sizing: padding-box;
+  background-color: #fff;
+  box-shadow: 1px 2px 0 rgba(255, 255, 255, 0.3), inset 1px 2px 4px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.12);
+  height: 24px;
+  transition: all 0.2s ease;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  z-index: 5;
+}
+
+#location_search_area #location_search_bar #location_search_submit {
+  position: absolute;
+  background: white;
+  top: 0;
+  right: 0;
+  float: right;
+  padding: 0;
+  border: none;
+  border-left: 1px solid #f0f0f0;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  height: 98%;
+  min-width: 60px;
+  width: 60px;
+  height: 46px;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  z-index: 10;
+}
+#location_search_area #location_search_bar #location_search_submit.icon-search:before {
+  font-size: 30px;
+  line-height: 42px;
+  color: #d0d0d0;
+}
+
+#location_search_area.active #location_search_bar {
+  transition: all 0.2s ease;
+}
+/* line 207, ../sass/_style.scss */
+#location_search_area.active #location_search_bar input[type=text] {
+  width: 100%;
+  padding: 12px 70px 10px 12px;
+}
+
+#location_search_area #geolocate_btn {
+  float: left;
+  margin: 0px;
+  height: 46px;
+  color: #d0d0d0;
+  font-size: 30px;
+  line-height: 46px;
+  text-align: center;
+  padding: 0px;
+  width: 60px;
+  vertical-align: top;
+  border-radius: 4px;
+  background-color: #fff;
+  /* layer fill content */
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  outline: none;
+  position: relative;
+  z-index: 110;
+}
+
+
+#search_results_wrap .search_result h2 {
+  padding-left: 30px;
+  max-width: 150px;
+ }
+
+#search_results_wrap #showing_results_for {
+  background: #cfd9db;
+}
+
+#map_frame {
+  top: 50px;
+  z-index: 0;
+}
+
+#map_canvas .infobubble .infowindow h2 {
+  text-shadow: 0 -1px 0 black;
+  color: #fff;
+  font-size: 18px;
+  line-height: 25px;
+  padding: 4px 10px 4px 10px;
+  font-weight: bold;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* line 498, ../sass/_style.scss */
+.pac-container {
+  border-radius: 4px;
+  position: fixed !important;
+  top: auto !important;
+  bottom: 65px !important;
+  left: 0 !important;
+  min-width: 96% !important;
+  height: 130px !important;
+  display: block;
+  margin-left: 2%;
+}
+/* line 508, ../sass/_style.scss */
+.pac-container .pac-item {
+  font-size: 16px;
+  font-family: "helvetica neue", "helvetica", "arial", "sans-serif";
+  line-height: 1.4em;
+}
+
+#map_canvas .infobubble a:active {
+  bottom: 8px;
+  box-shadow: none;
+  background: #085430;
+}
+
+/* line 761, ../sass/_style.scss */
+#bottom-slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: -200%;
+  z-index: 9999;
+  background: red;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+/* line 771, ../sass/_style.scss */
+#bottom-slide.active {
+  bottom: 0;
+  margin-bottom: -50px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* line 786, ../sass/_style.scss */
+.tall {
+  height: 100%;
+}
+
+/* line 787, ../sass/_style.scss */
+.relative {
+  position: relative;
+}
+
+/* line 788, ../sass/_style.scss */
+.absolute {
+  position: absolute;
+}
+
+/* line 790, ../sass/_style.scss */
+.left {
+  float: left;
+}
+
+/* line 791, ../sass/_style.scss */
+.right {
+  float: right;
+}
+
+/* line 793, ../sass/_style.scss */
+#content {
+  /* background: #BFC7D8; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  z-index: 3;
+  height: 100%;
+}
+
+
+/* line 805, ../sass/_style.scss */
+.left-drawer,
+.right-drawer {
+  background: #ecf0f1;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 265px;
+  bottom: 0;
+  z-index: 1;
+  overflow: auto;
+  -webkit-transition-property: top, bottom;
+  transition-property: top, bottom;
+  -webkit-transition-duration: 0.2s, 0.2s;
+  transition-duration: 0.2s, 0.2s;
+  -webkit-transition-timing-function: linear, linear;
+  transition-timing-function: linear, linear;
+  -webkit-overflow-scrolling: touch;
+}
+/* line 823, ../sass/_style.scss */
+.left-drawer::-webkit-scrollbar,
+.right-drawer::-webkit-scrollbar {
+  width: 6px;
+}
+/* line 827, ../sass/_style.scss */
+.left-drawer::-webkit-scrollbar-track,
+.right-drawer::-webkit-scrollbar-track {
+  display: none;
+  border-radius: 10px;
+}
+
+.left-drawer::-webkit-scrollbar-thumb,
+.right-drawer::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: white;
+}
+
+.right-drawer {
+  left: auto;
+  right: 0;
+}
+
+.active-drawer {
+  z-index: 2;
+  display: block;
+}
+
+.left-drawer {
+  -webkit-box-shadow: inset -8px 0px 8px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset -8px 0px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: inset -8px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+.right-drawer {
+  left: auto;
+  right: 0;
+  -webkit-box-shadow: inset 8px 0px 8px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 8px 0px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 8px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toggler {
+  width: 80%;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 auto;
+  position: relative;
+  top: 70px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.scrollable {
+  overflow: auto;
+  -webkit-transition-property: top, bottom;
+  transition-property: top, bottom;
+  -webkit-transition-duration: 0.2s, 0.2s;
+  transition-duration: 0.2s, 0.2s;
+  -webkit-transition-timing-function: linear, linear;
+  transition-timing-function: linear, linear;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+

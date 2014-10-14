@@ -10,7 +10,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 
     <!--(if target dev)><!--><link rel="stylesheet" type="text/css" href="css/html5-reset.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css"><!--<!(endif)-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/desktop.css"><!--<!(endif)-->
     <!--(if target dist)><link rel="stylesheet" type="text/css" href="css/{{pkgName}}.{{pkgVersion}}.min.css"><!(endif)-->
 
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
@@ -35,7 +37,7 @@
     <section id="sidebar">
 
         <header>
-            <h1><a href="/">PARK COMPASS</a></h1>
+            <h1><a href="/" class="icon-pc-logo">PARK COMPASS</a></h1>
             <nav>
                <!--  <a href="about">about</a> -->
                 <a href="#"><img src="img/info_icon.png" width="17" height="17" alt="info"></a>
@@ -177,8 +179,9 @@
                 $result = mysql_query($sql);
                 if (mysql_num_rows($result)!=0) {
                     while ($row = @mysql_fetch_assoc($result)){ 
-                            $lat=$row['ParkLat'];
-                            $lng=$row['ParkLng']; }; ?>
+                        $lat=$row['ParkLat'];
+                        $lng=$row['ParkLng']; }; 
+            ?>
             var lat = <?php echo $lat ?>;
             var lng = <?php echo $lng ?>;
             $(window).bind("load",function() {

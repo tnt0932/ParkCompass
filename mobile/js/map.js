@@ -3,6 +3,7 @@ var xml;
 var markers = [];
 var userMarker = [];
 var infoWindow;
+var infoBubble;
 var search_result_list;
 var userMarkerPosition = new google.maps.LatLng(49.25, -123.133333);
 var parkIcon = 'img/park_icon.png';
@@ -19,10 +20,8 @@ var userIconShadowAnchor = new google.maps.Point(3, 34);
 var userIconShadow = new google.maps.MarkerImage(userIconShadowURL, userIconShadowSize, userIconShadowOrigin, userIconShadowAnchor);
 var markerClusterExists = false;
 var initialLocation;
-var browserSupportFlag;
+var browserSupportFlag = new Boolean();
 var clickedFilters = [];
-
-if ($('.filter-count').length !== 0 ) {var isMobile = true; } else {var isMobile = false; }
 
 
 
@@ -32,12 +31,14 @@ function load(lat, lng) {
         center: userMarkerPosition,
         zoom: 12,
         mapTypeId: 'roadmap',
-        mapTypeControlOptions: {
-            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-        }
+        streetViewControl: false,
+        zoomControl: false,
+        panControl: false,
+        mapTypeControl: false
     });
     infoWindow = new google.maps.InfoWindow();
-    search_result_list = $('#search_results_list');
+
+    search_result_list = document.getElementById('search_results_list');
 
     createUserMarker(map, userMarkerPosition);
     searchLocationsNear(userMarkerPosition);
@@ -63,22 +64,25 @@ function searchLocations() {
     });
 }
 
+
+
 function searchLocationsNear(args) {
     clearLocations();
     var radius = 100; //return all results in a 100km radius - basically, return all results
-    var jsonResponseURL = '/json_gen.php?lat=' + userMarkerPosition.lat() + '&lng=' + userMarkerPosition.lng() + '&radius=' + radius + '&filters=' + JSON.stringify(clickedFilters);
-
-    // Query generated JSON
-    $.getJSON(jsonResponseURL, function(jsonResponseData) {
-        parseParksJSON(jsonResponseData);
+    //console.log(userMarkerPosition.lat(), userMarkerPosition.lng(), radius);
+    var searchUrl = 'pc_genxml.php?lat=' + userMarkerPosition.lat() + '&lng=' + userMarkerPosition.lng() + '&radius=' + radius + '&filters=' + JSON.stringify(clickedFilters);
+    //console.log(searchUrl);
+    downloadUrl(searchUrl, function(data) {
+        var xml = parseXml(data);
+        getParksData(xml);
     });
 }
 
-function parseParksJSON(jsonResponseData) {
+function getParksData(xml) {
     var bounds = new google.maps.LatLngBounds();
-    var parks = jsonResponseData.parks;
-
-    if (parks.length === 0) {
+    var parkNodes = xml.documentElement.getElementsByTagName("park");
+    
+    if (parkNodes.length == 0) {
         userMarkerPosition = new google.maps.LatLng(49.25, -123.133333);
         alert('No Metro Vancouver parks found in that area. We\'re going to move your marker back to the heart of Vancouver!');
         clearUserMarker();
@@ -87,52 +91,54 @@ function parseParksJSON(jsonResponseData) {
         map.setCenter(userMarkerPosition);
         return;
     }
-    for (var i = 0; i < parks.length; i++)  {
+    for (var i = 0; i < parkNodes.length; i++)  {
         
         var facilitiesList = [];
-        var facilities = parks[i].facilities;
-
-        // for each facility, find their type & quantity and push it to facilitiesList
+        var facility;
+        var facilities = parkNodes[i].childNodes;
         for (var x = 0; x < facilities.length; x++) {
-            facilitiesList.push([facilities[x].fType, facilities[x].fQuan]);
+            var fType = facilities[x].getAttribute("fType");
+            var fQuan = facilities[x].getAttribute("fQuan");
+            facility = [fType, fQuan];
+            facilitiesList.push(facility);
         }
 
-        var name = parks[i].pName;
-        var address = parks[i].pAddress;
-        var neighbourhood = parks[i].nName;
-        var url = parks[i].slug;
-        var pID = parks[i].pID;
-        var latlng = new google.maps.LatLng( parseFloat(parks[i].pLat), parseFloat(parks[i].pLng));
-        var distance = parseFloat(parks[i].distance);
-
+        var name = parkNodes[i].getAttribute("pName");
+        var address = parkNodes[i].getAttribute("pAddress");
+        var neighbourhood = parkNodes[i].getAttribute("nName");
+        var url = parkNodes[i].getAttribute("slug")
+        var latlng = new google.maps.LatLng(
+        parseFloat(parkNodes[i].getAttribute("pLat")), parseFloat(parkNodes[i].getAttribute("pLng")));
+        var distance = parseFloat(parkNodes[i].getAttribute("distance"));
         createResults(name, distance, i);
-
-        createMarker(latlng, name, address, neighbourhood, facilitiesList, url, pID);
-
+        createMarker(latlng, name, address, neighbourhood, facilitiesList, url);
         bounds.extend(latlng);
     }
-
-    // Marker Clusterer
     var mcOptions = {
         maxZoom: 14,
         minimumClusterSize: 4
     };
-
     markerCluster = new MarkerClusterer(map, markers, mcOptions);
     markerClusterExists = true;
-    search_result_list.css('visibility', 'visible');
-    search_result_list.click(function(e) {
+    search_result_list.style.visibility = "visible";
+    search_result_list.onclick = function(e) {
         var markerNum = e.target.parentNode.id;
         google.maps.event.trigger(markers[markerNum], 'click');
-    }); 
+        //console.log(markerNum);
+    };
+
+    
 }
 
 
+// RESULTS LIST
 
-// Create the list of nearby parks
 function createResults(name, distance, num) {
-    var results = '<li id="'+num+'" class="search_result"><h2>' + name + '</h2><h2>' + distance.toFixed(1) + 'km</h2></li>';
-    search_result_list.append(results);
+    var results = document.createElement("li");
+    results.id = num;
+    results.className = 'search_result';
+    results.innerHTML = '<h2>' + name + '</h2><h2>' + distance.toFixed(1) + 'km</h2>';
+    search_result_list.appendChild(results);
 }
 
 
@@ -141,7 +147,7 @@ function showingResultsFor() {
     geocoder.geocode({'latLng': userMarkerPosition}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
-          $('#showing_results_for_span').html(results[0].formatted_address);
+          document.getElementById('showing_results_for_span').innerHTML = (results[0].formatted_address);
         }
       } else {
         alert("Geocoder failed due to: " + status);
@@ -149,41 +155,38 @@ function showingResultsFor() {
     });
 }
 
-
 // ===========================================
 //
 //             FILTERS
 //
 // ===========================================
-// TODO:
-// * Improve mobile script handling
-// ** Find better way than 'isMobile' variable. 
-// * break this section into functions
+
 
     $(document).ready(function() {
         $('#facilities_flyout').click(function(e) {
             // don't register event if user clicks on containing div, only directly on facilities
             if ($(e.target).attr('id') != 'facilities_flyout') {
-                var target_id = $(e.target).attr('id').substr(6);
                 if (!$(e.target).hasClass('facility_selected')) {
+                    //console.log(e.target);
                     $(e.target).addClass('facility_selected');
-                    clickedFilters.push(target_id);
-                    if (isMobile) {$('.filter-count').removeClass('hidden').text(clickedFilters.length);}
+                    var id = $(e.target).attr('id').substr(6);
+                    clickedFilters.push(id);
+                    //console.log(clickedFilters);
+                    $('.filter-count').removeClass('hidden').text(clickedFilters.length);
                 } else {
                     $(e.target).removeClass('facility_selected');
+                    var id = $(e.target).attr('id').substr(6);
                     for (var i = 0; i < clickedFilters.length; i++) {
-                        if (clickedFilters[i] == target_id) {
+                        if (clickedFilters[i] == id) {
                             clickedFilters.splice(i,1);
                         }
                     }
-
-                    if (isMobile) {
-                        $('.filter-count').text(clickedFilters.length);
-                        if (clickedFilters.length === 0) {
-                            $('.filter-count').addClass('hidden').text('');
-                        }
+                    $('.filter-count').text(clickedFilters.length);
+                    if (clickedFilters.length == 0) {
+                        $('.filter-count').addClass('hidden').text('');
                     }
                     
+                    //console.log(clickedFilters);
                 }
                 searchLocationsNear();
             }
@@ -192,7 +195,7 @@ function showingResultsFor() {
             clickedFilters.length = 0;
             $('#facilities_flyout a').removeClass('facility_selected');
             searchLocationsNear();
-            if (isMobile) { $('.filter-count').addClass('hidden').text(''); }
+            $('.filter-count').addClass('hidden').text('');
         });
     });
 
@@ -202,62 +205,63 @@ function showingResultsFor() {
 //
 // ===========================================
 
-function createMarker(latlng, name, address, neighbourhood, facilitiesList, url, pID) {
+function createMarker(latlng, name, address, neighbourhood, facilitiesList, url) {
     var directions = 'http://maps.google.com/maps?saddr='+ userMarkerPosition +'&daddr='+ latlng;
     var link = 'http://parkcompass.com/'+url;
     var listHtml = '<ul>';
     for (var i=0; i < facilitiesList.length; i++) {
         listHtml += '<li>'+facilitiesList[i][0]+'<span>'+facilitiesList[i][1]+'</span></li>';
-    }
+    };
     listHtml += '</ul>';
+    var windowWidth = $(window).width();
+    var windowHeight = $(window).height();
+    var windowHeightOffset = windowHeight/3;
     var infoWindowHtml = '<div class="infowindow"><h2>' + name + "</h2>";
-    var html = '<div class="infowindow"><div id="photo'+pID+'"></div><h2>' + name + "</h2><br/><p>Address: <b>" + address + "</b></p><br/><p>Neighbourhood: <b>" + neighbourhood + "</b></p><br>" + listHtml + "<br><p>Share:<br><input type='text' value='"+link+"' onclick='this.select()' class='parkLink'><a href='" + directions + "' target='_blank'>Directions</a>";
+    var html = '<div><h2>' + name + "</h2><br/><p>Address: <b>" + address + "</b></p><br/><p>Neighbourhood: <b>" + neighbourhood + "</b></p><br>" + listHtml + "<br><p>Share:<br><input type='text' value='"+link+"' onclick='this.select()' class='parkLink'><a href='" + directions + "' target='_blank'>Directions</a>";
     var marker = new google.maps.Marker({
         map: map,
         position: latlng,
         icon: parkIcon,
         shadow: parkIconShadow
     });
-
-    if (!isMobile) {
-
-        google.maps.event.addListener(marker, 'click', function() {
-            infoWindow.setContent(html);
-            infoWindow.open(map, marker);
-        });
-
-    } else {
-
-        var windowWidth = $(window).width();
-        var windowHeight = $(window).height();
-        var windowHeightOffset = windowHeight/3;
-        infoBubble = new InfoBubble({
-            map: map,
-            position: latlng,
-            shadowStyle: 1,
-            padding: 0,
-            backgroundColor: '#fff',
-            borderRadius: 4,
-            arrowSize: 10,
-            borderWidth: 1,
-            borderColor: '#d0d0d0',
-            disableAutoPan: true,
-            hideCloseButton: false,
-            arrowPosition: 50,
-            backgroundClassName: 'infobubble',
-            arrowStyle: 0,
-            minWidth: windowWidth,
-            maxHeight: windowHeight*0.6,
-            minHeight: windowHeight*0.6
-        });
-        google.maps.event.addListener(marker, 'click', function() {
-            infoBubble.setContent(html);
-            infoWindow.setContent(infoWindowHtml);
-            infoBubble.open(map, marker);
-            map.panToWithOffset(latlng, 0, -windowHeightOffset);
-        });
-
-    }
+    infoBubble = new InfoBubble({
+        map: map,
+        position: latlng,
+        shadowStyle: 1,
+        padding: 0,
+        backgroundColor: '#fff',
+        borderRadius: 4,
+        arrowSize: 10,
+        borderWidth: 1,
+        borderColor: '#d0d0d0',
+        disableAutoPan: true,
+        hideCloseButton: false,
+        arrowPosition: 50,
+        backgroundClassName: 'infobubble',
+        arrowStyle: 0,
+        minWidth: windowWidth,
+        maxHeight: windowHeight*0.6,
+        minHeight: windowHeight*0.6
+    });
+    google.maps.event.addListener(marker, 'click', function() {
+        infoBubble.setContent(html);
+        infoWindow.setContent(infoWindowHtml);
+        infoBubble.open(map, marker);
+        map.panToWithOffset(latlng, 0, -windowHeightOffset);
+        /* infoWindow.open(map, marker); */
+   /*
+ $('.infobubble').click(function() {
+        var html = '<div><h2>' + name + "</h2><br/><p>Address: <b>" + address + "</b></p><br/><p>Neighbourhood: <b>" + neighbourhood + "</b></p><br>" + listHtml + "<br><p>Share:<br><input type='text' value='"+link+"' onclick='this.select()' class='parkLink'><a href='" + directions + "' target='_blank'>Directions</a>";
+        $('#bottom-slide-content').html(html)
+        if ($('#bottom-slide').hasClass('active')){
+            $(this).removeClass('active');
+        } else {
+            $(this).addClass('active');
+        }
+        $('#bottom-slide').toggleClass('active');
+    });
+*/
+    });
     markers.push(marker);
 }
 
@@ -267,33 +271,12 @@ function clearLocations() {
         markers[i].setMap(null);
     }
     markers.length = 0;
-    search_result_list.empty();
+    search_result_list.innerHTML = "";
     if (markerClusterExists) {
         markerCluster.clearMarkers();
         markerClusterExists = false;
     }
 }
-
-// ===========================================
-//
-//                PanTo Function
-//
-// ===========================================
-
-google.maps.Map.prototype.panToWithOffset = function(latlng, offsetX, offsetY) {
-    var map = this;
-    var ov = new google.maps.OverlayView();
-    ov.onAdd = function() {
-        var proj = this.getProjection();
-        var aPoint = proj.fromLatLngToContainerPixel(latlng);
-        aPoint.x = aPoint.x+offsetX;
-        aPoint.y = aPoint.y+offsetY;
-        map.panTo(proj.fromContainerPixelToLatLng(aPoint));
-    }; 
-    ov.draw = function() {}; 
-    ov.setMap(this); 
-};
-
 
 
 
@@ -329,6 +312,27 @@ function clearUserMarker() {
     userMarker.length = 0;
 }
 
+
+// ===========================================
+//
+//                PanTo Function
+//
+// ===========================================
+
+google.maps.Map.prototype.panToWithOffset = function(latlng, offsetX, offsetY) {
+    var map = this;
+    var ov = new google.maps.OverlayView();
+    ov.onAdd = function() {
+        var proj = this.getProjection();
+        var aPoint = proj.fromLatLngToContainerPixel(latlng);
+        aPoint.x = aPoint.x+offsetX;
+        aPoint.y = aPoint.y+offsetY;
+        map.panTo(proj.fromContainerPixelToLatLng(aPoint));
+    }; 
+    ov.draw = function() {}; 
+    ov.setMap(this); 
+};
+
 // ===========================================
 //
 //                GEOLOCATION
@@ -356,7 +360,7 @@ function geolocation() {
   }
   
   function handleNoGeolocation(errorFlag) {
-    if (errorFlag === true) {
+    if (errorFlag == true) {
       alert("Geolocation service failed. We've placed you in Downtown Vancouver.");
       //initialLocation = new google.maps.LatLng(userMarkerPosition);
     } else {
@@ -366,3 +370,33 @@ function geolocation() {
     map.setCenter(userMarkerPosition);
   }
 }
+
+// ===========================================
+//
+//                XML Functions
+//
+// ===========================================
+
+function downloadUrl(url, callback) {
+    var request = window.ActiveXObject ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest;
+    request.onreadystatechange = function() {
+        if (request.readyState == 4) {
+            request.onreadystatechange = doNothing;
+            callback(request.responseText, request.status);
+        }
+    };
+    request.open('GET', url, true);
+    request.send(null);
+}
+
+function parseXml(str) {
+    if (window.ActiveXObject) {
+        var doc = new ActiveXObject('Microsoft.XMLDOM');
+        doc.loadXML(str);
+        return doc;
+    } else if (window.DOMParser) {
+        return (new DOMParser).parseFromString(str, 'text/xml');
+    }
+}
+
+function doNothing() {}
