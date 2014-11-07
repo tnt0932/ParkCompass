@@ -7,7 +7,7 @@ Parks data provided by the open data projects of the cities of Vancouver & North
 
 ### Getting set up
 **Note:** *This was a student project - so it needs lots of love before it's truly "production ready" :)
-Also, just a heads up that these setup instructions may not be comprehensive. Let me know if you find anything missing.*
+Also, just a heads up that these instructions may not be comprehensive. Let me know if you find anything missing.*
 
 #####Install the following on your local machine:
 * [Node & NPM](http://nodejs.org/)
