@@ -4,7 +4,7 @@
 ### Synopsis
 Park Compass (http://parkcompass.com) lets users discover parks by location and park facility search.
 It makes use of Google Maps, MYSQL, PHP, SASS, GRUNT, JSON & jQuery.
-Parks data provided by the cities on Vancouver & North Vancouver.
+Parks data provided by the open data projects of the cities of Vancouver & North Vancouver.
 
 ### Getting set up
 **Note:** *This was a student project - so it needs lots of love before it's truly "production ready" :)
