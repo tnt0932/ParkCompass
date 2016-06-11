@@ -45,7 +45,6 @@ function load(lat, lng) {
     
 }
 
-
 function searchLocations() {
     var address = document.getElementById("location_search_input").value;
     var geocoder = new google.maps.Geocoder();
